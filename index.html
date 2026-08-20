@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harneet Kaur | Data Scientist</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        'ds-dark': '#020617',    /* Deep Black */
+                        'ds-navy': '#0f172a',    /* Navy Blue */
+                        'ds-teal': '#115e59',    /* Dark Teal */
+                        'ds-cyan': '#22d3ee',    /* Bright Cyan Accent */
+                        'ds-purple': '#a78bfa',  /* Purple Accent */
+                        'ds-rose': '#fb7185',    /* Rose Accent */
+                        'ds-amber': '#fbbf24',   /* Amber Accent */
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* --- PURE CSS BACKGROUND (NO IMAGES) --- */
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #e2e8f0;
+            min-height: 100vh;
+            
+            /* The requested gradient: Black -> Navy -> Teal */
+            background: linear-gradient(135deg, #020617 0%, #0f172a 40%, #0f2e3a 100%);
+            background-attachment: fixed;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #020617; }
+        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #22d3ee; }
+
+        /* Utilities */
+        .section-fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .glow-text {
+            background: linear-gradient(135deg, #22d3ee, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(34, 211, 238, 0.2);
+        }
+
+        /* Glassmorphism Cards */
+        .glass-card {
+            background: rgba(15, 23, 42, 0.6); /* Navy with transparency */
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glass-card:hover {
+            border-color: rgba(34, 211, 238, 0.4);
+            box-shadow: 0 0 25px rgba(34, 211, 238, 0.1);
+            transform: translateY(-4px);
+            background: rgba(15, 23, 42, 0.8);
+        }
+
+        .skill-pill {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-family: 'JetBrains Mono', monospace;
+            transition: all 0.3s;
+        }
+        .skill-pill:hover {
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+
+        /* Timeline Dot */
+        .timeline-dot {
+            width: 12px;
+            height: 12px;
+            background: #10b981; /* Emerald Green */
+            border-radius: 50%;
+            margin-top: 6px;
+            box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.2);
+        }
+
+        /* Image Styling */
+        .hero-img-container {
+            position: relative;
+            border-radius: 9999px; 
+            padding: 3px;
+            background: linear-gradient(135deg, #22d3ee, #10b981);
+            box-shadow: 0 0 40px rgba(34, 211, 238, 0.2);
+        }
+        
+        .about-img-container {
+            position: relative;
+            border-radius: 1rem;
+            padding: 1px;
+            background: linear-gradient(135deg, #22d3ee, #a78bfa);
+            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.5);
+        }
+    </style>
+</head>
+<body class="selection:bg-ds-cyan selection:text-black">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-card border-b-0 rounded-b-xl mx-auto max-w-7xl inset-x-0 top-0 mt-0 md:mt-4 md:rounded-xl">
+        <div class="px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0 flex items-center gap-2">
+                    <span class="text-xl font-bold font-mono text-white tracking-tight">
+                        harneetkaur<span class="text-ds-cyan">.page</span>
+                    </span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#about" class="text-gray-300 hover:text-ds-cyan text-sm font-medium transition-colors">About</a>
+                    <a href="#experience" class="text-gray-300 hover:text-ds-cyan text-sm font-medium transition-colors">Experience</a>
+                    <a href="#skills" class="text-gray-300 hover:text-ds-cyan text-sm font-medium transition-colors">Stack</a>
+                    <a href="#projects" class="text-gray-300 hover:text-ds-cyan text-sm font-medium transition-colors">Projects</a>
+                    <a href="#education" class="text-gray-300 hover:text-ds-cyan text-sm font-medium transition-colors">Journey</a>
+                    <a href="#contact" class="px-5 py-2 rounded-lg bg-ds-cyan/10 text-ds-cyan border border-ds-cyan/20 hover:bg-ds-cyan hover:text-black transition-all text-sm font-bold">Contact</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-300 hover:text-white p-2">
+                        <i data-feather="menu"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden glass-card border-t border-gray-700 rounded-b-xl">
+            <div class="px-4 pt-4 pb-6 space-y-2">
+                <a href="#about" class="block text-gray-300 hover:text-ds-cyan py-2">About</a>
+                <a href="#experience" class="block text-gray-300 hover:text-ds-cyan py-2">Experience</a>
+                <a href="#skills" class="block text-gray-300 hover:text-ds-cyan py-2">Skills</a>
+                <a href="#projects" class="block text-gray-300 hover:text-ds-cyan py-2">Projects</a>
+                <a href="#education" class="block text-gray-300 hover:text-ds-cyan py-2">Journey</a>
+                <a href="#contact" class="block text-ds-cyan font-bold py-2">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28">
+
+        <!-- Hero Section -->
+        <section id="home" class="min-h-[85vh] flex flex-col md:flex-row justify-center items-center gap-12 py-20">
+            <!-- Text Content -->
+            <div class="flex-1 text-center md:text-left z-10">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 text-ds-cyan text-xs font-mono mb-6 border border-ds-cyan/20">
+                    <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                    M.Sc. Data Science | Full-Stack Engineering Intern
+                </div>
+                <h1 class="text-5xl md:text-7xl font-bold tracking-tight mb-6 leading-tight text-white">
+                    Teaching Agents to Reason. <br>
+                    <span class="glow-text">Making Code Actually Secure.</span>
+                </h1>
+                <p class="text-lg md:text-xl text-gray-400 leading-relaxed mb-6 max-w-2xl font-light">
+                    I'm Harneet Kaur, a Data Scientist building Agentic AI, RAG, and LLM applications — grounded in a rigorous Statistics and Data Science foundation (M.Sc., 9.46 CGPA). I've shipped a 6-agent LangGraph framework for clinical AI routing and production automation-engine code at Incredible Visibility, where I work as a Full-Stack Engineering Intern. I don't just apply algorithms; I understand the mathematics that makes them work, and I pair that with hands-on full-stack engineering fluency across React, Node.js, and Supabase.
+                </p>
+                <div class="flex flex-wrap justify-center md:justify-start gap-2 mb-8">
+                    <span class="skill-pill text-ds-cyan border-ds-cyan/20 bg-ds-cyan/5">9.46 CGPA (M.Sc.)</span>
+                    <span class="skill-pill text-ds-purple border-ds-purple/20 bg-ds-purple/5">6-Agent LangGraph System</span>
+                    <span class="skill-pill text-ds-rose border-ds-rose/20 bg-ds-rose/5">11+ Merged PRs</span>
+                    <span class="skill-pill text-ds-amber border-ds-amber/20 bg-ds-amber/5">Full-Stack + ML</span>
+                </div>
+                <div class="flex flex-wrap justify-center md:justify-start gap-4">
+                    <a href="./Harneet-Kaur-Resume.pdf" download class="px-8 py-3.5 rounded-lg glass-card text-white hover:bg-white/5 transition-all flex items-center gap-2 group">
+                        <i data-feather="download" class="w-4 h-4 group-hover:translate-y-1 transition-transform"></i> Resume
+                    </a>
+                </div>
+            </div>
+            
+            <!-- IMAGE 1: HERO (Circular Profile) -->
+            <div class="flex-1 max-w-sm relative z-10 flex justify-center">
+                <div class="hero-img-container rounded-full w-72 h-72 md:w-80 md:h-80 overflow-hidden">
+                     <img src="dp1.png" alt="Harneet Kaur" class="w-full h-full object-cover bg-gray-900">
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-24 section-fade-in relative">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                
+                <!-- IMAGE 2: ABOUT (Rectangular Profile) -->
+                <div class="order-2 md:order-1 flex justify-center">
+                    <div class="about-img-container w-full max-w-md overflow-hidden">
+                        <img class="w-full h-auto object-cover transition-all duration-700" src="dp2.png" alt="Harneet Kaur">
+                    </div>
+                </div>
+                
+                <div class="order-1 md:order-2">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6 text-white">
+                        About <span class="text-ds-purple">Me</span>
+                    </h2>
+                    <div class="space-y-4 text-gray-300 text-lg leading-relaxed">
+                        <p>
+                            Disciplined and high-achieving Data Scientist with an M.Sc. in Data Science from VIT University (CGPA: 9.46/10) and a B.Sc. (Hons.) in Statistics (CGPA: 9.12/10). Passionate about bridging the gap between theoretical concepts and real-world application, with a specialized focus on Agentic AI, LLM applications, and Natural Language Processing.
+                        </p>
+                        <p>
+                            Currently working as a Full-Stack Engineering Intern at Incredible Visibility, building production automation-engine code for an AI workflow platform. I combine technical rigor—honed through academic projects like a 6-agent LangGraph framework for clinical AI routing—with hands-on full-stack engineering fluency across React, Node.js, and Supabase. Seeking to leverage my skills in Python, ML, and statistical modeling to drive impact at innovative tech companies.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Work Experience Section -->
+        <section id="experience" class="py-24 section-fade-in">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 border-b border-gray-800 pb-8">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-2">Work Experience</h2>
+                    <p class="text-gray-400">Full-Stack Engineering Intern — AI Automation Platform</p>
+                </div>
+                <div class="flex gap-4 mt-4 md:mt-0">
+                    <span class="text-gray-400 font-mono text-sm flex items-center gap-2 border border-gray-700 px-4 py-2 rounded">
+                        <i data-feather="map-pin" class="w-4 h-4"></i> Incredible Visibility | Remote
+                    </span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Sub-arc 1 -->
+                <div class="glass-card rounded-xl overflow-hidden group hover:border-ds-cyan/50 transition-all">
+                    <div class="p-8">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="p-3 bg-ds-cyan/10 rounded-lg text-ds-cyan">
+                                <i data-feather="git-merge"></i>
+                            </div>
+                            <span class="text-xs font-mono text-gray-400">Jul 2026 – Present</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-3 group-hover:text-ds-cyan transition-colors">Automation Workflow Engine</h3>
+                        <p class="text-gray-300 mb-6 text-sm leading-relaxed">
+                            n8n-style visual workflow platform. Contributed to the Switch (n-way branch) node's validation and execution logic within an existing backend framework, working with the team's new <code class="text-ds-cyan text-xs">executeContract(ctx)</code> pattern — now the reference implementation for new node types.
+                        </p>
+                        <p class="text-gray-300 mb-6 text-sm leading-relaxed">
+                            <strong>Key Contributions:</strong> Implemented and integrated builder UI (canvas, config panels, registration) for 5 node types — Switch, Loop, Merge, Parallel, Sub-workflow. Worked on an expression/variable picker and run-state inspector, debugging variable resolution issues across 9 of 13 node types. Contributed to 2 end-to-end golden-flow templates and helped resolve a cross-org data leakage issue plus a prompt-injection risk flagged in security review.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-pill text-ds-cyan border-ds-cyan/30">Node.js</span>
+                            <span class="skill-pill text-ds-cyan border-ds-cyan/30">React</span>
+                            <span class="skill-pill text-ds-cyan border-ds-cyan/30">Supabase</span>
+                            <span class="skill-pill text-ds-cyan border-ds-cyan/30">Workflow Engine</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sub-arc 2 -->
+                <div class="glass-card rounded-xl overflow-hidden group hover:border-ds-purple/50 transition-all">
+                    <div class="p-8">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="p-3 bg-ds-purple/10 rounded-lg text-ds-purple">
+                                <i data-feather="layers"></i>
+                            </div>
+                            <span class="text-xs font-mono text-gray-400">Mar 2026 – Jul 2026</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-3 group-hover:text-ds-purple transition-colors">Platform & Product Engineering</h3>
+                        <p class="text-gray-300 mb-6 text-sm leading-relaxed">
+                            Contributed to a full-stack, entity-agnostic fine-tuning pipeline for Agents/Assistants — CSV-to-JSONL normalization, dual Supabase/OpenAI storage, and polling-based status tracking.
+                        </p>
+                        <p class="text-gray-300 mb-6 text-sm leading-relaxed">
+                            <strong>Key Contributions:</strong> Worked across V2 UI migrations for Settings, Profile, and Tools Library spanning 60+ files across frontend, API, and Supabase. Debugged and refined 25+ UI/UX and theming defects across dashboard, builder, and pricing surfaces. Shipped changes for 11+ merged PRs across backend, frontend, and database layers.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-pill text-ds-purple border-ds-purple/30">Full-Stack</span>
+                            <span class="skill-pill text-ds-purple border-ds-purple/30">Fine-Tuning Pipeline</span>
+                            <span class="skill-pill text-ds-purple border-ds-purple/30">UI Migration</span>
+                            <span class="skill-pill text-ds-purple border-ds-purple/30">11+ PRs</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Engineering Highlights Section -->
+        <section id="highlights" class="py-24 section-fade-in">
+            <div class="flex flex-col items-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Engineering <span class="text-ds-amber">Highlights</span></h2>
+                <p class="text-gray-400 text-center max-w-2xl">Beyond feature delivery — findings and audits that shaped how the platform is built.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Highlight 1: P0 Security Finding -->
+                <div class="glass-card rounded-xl overflow-hidden group hover:border-ds-rose/50 transition-all">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="p-3 bg-ds-rose/10 rounded-lg text-ds-rose">
+                                <i data-feather="shield-off"></i>
+                            </div>
+                            <span class="px-2 py-1 rounded bg-ds-rose/20 text-ds-rose text-xs font-mono font-bold">P0 SECURITY</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2 group-hover:text-ds-rose transition-colors">Cross-Tenant Auth Bypass</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed mb-4">
+                            Discovered and escalated a pre-authentication vulnerability across the platform's tools-library endpoints — no auth check, tenant credentials resolved directly from request body. Traced the exact failure point to the missing route-level auth hook, scoped the true blast radius to <strong>all 21 affected endpoints</strong> (not just the one reported), and got it triaged to P0.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-pill text-ds-rose border-ds-rose/30">Auth Architecture</span>
+                            <span class="skill-pill text-ds-rose border-ds-rose/30">Multi-Tenancy</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Highlight 2: Prompt Injection Defense -->
+                <div class="glass-card rounded-xl overflow-hidden group hover:border-ds-amber/50 transition-all">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="p-3 bg-ds-amber/10 rounded-lg text-ds-amber">
+                                <i data-feather="shield"></i>
+                            </div>
+                            <span class="px-2 py-1 rounded bg-ds-amber/20 text-ds-amber text-xs font-mono font-bold">LLM SECURITY</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2 group-hover:text-ds-amber transition-colors">Verified Prompt-Injection Defense</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed mb-4">
+                            Identified a prompt-injection surface in an agent-to-agent automation flow where untrusted webhook data reached an LLM's decision boundary. Fixed it via system/user role separation and XML-style data fencing — then didn't just assume it worked. Ran a live injection attempt against the fix and confirmed it held, <strong>4 out of 4 runs</strong>.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-pill text-ds-amber border-ds-amber/30">LLM Security</span>
+                            <span class="skill-pill text-ds-amber border-ds-amber/30">Empirical Testing</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Highlight 3: Dead Component Audit -->
+                <div class="glass-card rounded-xl overflow-hidden group hover:border-ds-teal/50 transition-all">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="p-3 bg-ds-teal/10 rounded-lg text-ds-teal">
+                                <i data-feather="search"></i>
+                            </div>
+                            <span class="px-2 py-1 rounded bg-ds-teal/20 text-ds-teal text-xs font-mono font-bold">CODE HEALTH</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2 group-hover:text-ds-teal transition-colors">Full Codebase Dead-Component Audit</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed mb-4">
+                            Independently scanned <strong>227 frontend components</strong> for reachability — direct imports, registry/string references, and dynamic imports — flagging <strong>32 as dead</strong> and documenting edge cases like barrel-file re-exports that silently break builds if cleaned up carelessly. Delivered as an interactive, filterable report for team triage.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-pill text-ds-teal border-ds-teal/30">Static Analysis</span>
+                            <span class="skill-pill text-ds-teal border-ds-teal/30">Bundle Size</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tech Stack -->
+        <section id="skills" class="py-24 section-fade-in">
+            <h2 class="text-3xl font-bold text-center text-white mb-16">Technical <span class="text-ds-cyan">Arsenal</span></h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Machine Learning & AI (Rose Theme) -->
+                <div class="glass-card p-6 rounded-xl md:col-span-2 hover:border-ds-rose/50 transition-colors">
+                    <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                        <i data-feather="cpu" class="text-ds-rose w-5 h-5"></i> Machine Learning & AI
+                    </h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-pill text-ds-rose border-ds-rose/20 bg-ds-rose/5">RAG</span>
+                        <span class="skill-pill text-ds-rose border-ds-rose/20 bg-ds-rose/5">NLP</span>
+                        <span class="skill-pill text-ds-rose border-ds-rose/20 bg-ds-rose/5">LLM Applications</span>
+                        <span class="skill-pill text-ds-rose border-ds-rose/20 bg-ds-rose/5">LLM Provider Architecture</span>
+                        <span class="skill-pill text-ds-rose border-ds-rose/20 bg-ds-rose/5">Prompt Engineering</span>
+                        <span class="skill-pill text-ds-rose border-ds-rose/20 bg-ds-rose/5">Agentic AI</span>
+                        <span class="skill-pill text-ds-rose border-ds-rose/20 bg-ds-rose/5">LangGraph</span>
+                        <span class="skill-pill text-ds-rose border-ds-rose/20 bg-ds-rose/5">Transformers</span>
+                        <span class="skill-pill text-ds-rose border-ds-rose/20 bg-ds-rose/5">Fine-Tuning</span>
+                        <span class="skill-pill text-ds-rose border-ds-rose/20 bg-ds-rose/5">Machine Learning</span>
+                        <span class="skill-pill text-ds-rose border-ds-rose/20 bg-ds-rose/5">Model Evaluation</span>
+                        <span class="skill-pill text-ds-rose border-ds-rose/20 bg-ds-rose/5">Scikit-Learn</span>
+                        <span class="skill-pill text-ds-rose border-ds-rose/20 bg-ds-rose/5">TensorFlow</span>
+                        <span class="skill-pill text-ds-rose border-ds-rose/20 bg-ds-rose/5">Keras</span>
+                        <span class="skill-pill text-ds-rose border-ds-rose/20 bg-ds-rose/5">Probability</span>
+                        <span class="skill-pill text-ds-rose border-ds-rose/20 bg-ds-rose/5">Statistics</span>
+                    </div>
+                </div>
+
+                <!-- Programming (Cyan Theme) -->
+                <div class="glass-card p-6 rounded-xl hover:border-ds-cyan/50 transition-colors">
+                    <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                        <i data-feather="code" class="text-ds-cyan w-5 h-5"></i> Programming
+                    </h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-pill text-ds-cyan border-ds-cyan/20 bg-ds-cyan/5">Python</span>
+                        <span class="skill-pill text-ds-cyan border-ds-cyan/20 bg-ds-cyan/5">SQL</span>
+                        <span class="skill-pill text-ds-cyan border-ds-cyan/20 bg-ds-cyan/5">R</span>
+                        <span class="skill-pill text-ds-cyan border-ds-cyan/20 bg-ds-cyan/5">JavaScript</span>
+                    </div>
+                </div>
+
+                <!-- Full-Stack & Platform (Purple Theme) -->
+                <div class="glass-card p-6 rounded-xl hover:border-ds-purple/50 transition-colors">
+                    <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                        <i data-feather="layers" class="text-ds-purple w-5 h-5"></i> Full-Stack & Platform
+                    </h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-pill text-ds-purple border-ds-purple/20 bg-ds-purple/5">React</span>
+                        <span class="skill-pill text-ds-purple border-ds-purple/20 bg-ds-purple/5">Node.js</span>
+                        <span class="skill-pill text-ds-purple border-ds-purple/20 bg-ds-purple/5">Supabase</span>
+                        <span class="skill-pill text-ds-purple border-ds-purple/20 bg-ds-purple/5">REST APIs</span>
+                        <span class="skill-pill text-ds-purple border-ds-purple/20 bg-ds-purple/5">Git</span>
+                        <span class="skill-pill text-ds-purple border-ds-purple/20 bg-ds-purple/5">Bitbucket</span>
+                    </div>
+                </div>
+
+                <!-- Data & Visualization (Amber Theme) -->
+                <div class="glass-card p-6 rounded-xl md:col-span-2 hover:border-ds-amber/50 transition-colors">
+                    <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                        <i data-feather="tool" class="text-ds-amber w-5 h-5"></i> Data & Visualization
+                    </h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-pill text-ds-amber border-ds-amber/20 bg-ds-amber/5">Pandas</span>
+                        <span class="skill-pill text-ds-amber border-ds-amber/20 bg-ds-amber/5">NumPy</span>
+                        <span class="skill-pill text-ds-amber border-ds-amber/20 bg-ds-amber/5">Matplotlib</span>
+                        <span class="skill-pill text-ds-amber border-ds-amber/20 bg-ds-amber/5">Seaborn</span>
+                        <span class="skill-pill text-ds-amber border-ds-amber/20 bg-ds-amber/5">Streamlit</span>
+                        <span class="skill-pill text-ds-amber border-ds-amber/20 bg-ds-amber/5">Jupyter Notebook</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-24 section-fade-in">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 border-b border-gray-800 pb-8">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-2">Deployed Solutions</h2>
+                    <p class="text-gray-400">Bridging the gap between theory and production.</p>
+                </div>
+                <div class="flex gap-4 mt-4 md:mt-0">
+                    <a href="https://github.com/Harneet9602/Machine-Learning-Portfolio" target="_blank" class="text-ds-purple hover:text-white font-mono text-sm flex items-center gap-2 border border-ds-purple/50 px-4 py-2 rounded hover:bg-ds-purple/10 transition-all">
+                        <i data-feather="book"></i> ML Portfolio
+                    </a>
+                    <a href="https://github.com/Harneet9602" target="_blank" class="text-ds-cyan hover:text-white font-mono text-sm flex items-center gap-2 border border-ds-cyan/50 px-4 py-2 rounded hover:bg-ds-cyan/10 transition-all">
+                        View GitHub <i data-feather="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Project 1: SEHAJ (most recent, left) -->
+                <div class="glass-card rounded-xl overflow-hidden group hover:border-ds-purple/50 transition-all">
+                    <div class="p-8">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="p-3 bg-ds-purple/10 rounded-lg text-ds-purple">
+                                <i data-feather="git-branch"></i>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-xs font-mono text-gray-400 block">Agentic AI / LLM</span>
+                                <span class="text-xs font-mono text-ds-purple">Dec 2025 – May 2026</span>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-3 group-hover:text-ds-purple transition-colors">SEHAJ: Multi-Agent Conversational AI for Mental Health Support</h3>
+                        <p class="text-gray-300 mb-6 text-sm leading-relaxed">
+                            Engineered a multi-agent orchestration framework with 6 specialized agents using LangGraph, improving intent routing and reducing context interference in clinical AI workflows.
+                        </p>
+                        <p class="text-gray-300 mb-6 text-sm leading-relaxed">
+                            <strong>Key Innovation:</strong> Designed a Guardian safety protocol achieving 90% interception accuracy on high-risk scenarios with 0% false positives on benign emotional conversations. Reduced token overhead by 54.7% and achieved 0.71s average latency via Groq acceleration; attained a CTRS therapeutic validation score of 4.47/5.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="skill-pill text-ds-purple border-ds-purple/30">LangGraph</span>
+                            <span class="skill-pill text-ds-purple border-ds-purple/30">Llama 3.3</span>
+                            <span class="skill-pill text-ds-purple border-ds-purple/30">Groq</span>
+                            <span class="skill-pill text-ds-purple border-ds-purple/30">Streamlit</span>
+                        </div>
+                        <div class="flex flex-wrap items-center gap-x-6 gap-y-2">
+                            <a href="https://github.com/Harneet9602" target="_blank" class="inline-flex items-center text-white hover:text-ds-purple font-semibold text-sm">
+                                View Code <i data-feather="external-link" class="w-4 h-4 ml-2"></i>
+                            </a>
+                            <a href="https://sehaj-holistic-ai-companion-mxmfmefmmhgtxcweevkx7e.streamlit.app/" target="_blank" class="inline-flex items-center text-white hover:text-ds-purple font-semibold text-sm">
+                                Live Demo <i data-feather="play-circle" class="w-4 h-4 ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: NLP Mental Health Classification -->
+                <div class="glass-card rounded-xl overflow-hidden group hover:border-ds-cyan/50 transition-all">
+                    <div class="p-8">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="p-3 bg-ds-cyan/10 rounded-lg text-ds-cyan">
+                                <i data-feather="activity"></i>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-xs font-mono text-gray-400 block">NLP / Healthcare</span>
+                                <span class="text-xs font-mono text-ds-cyan">Jul 2025 – Nov 2025</span>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-3 group-hover:text-ds-cyan transition-colors">NLP-Powered Mental Health Status Detection</h3>
+                        <p class="text-gray-300 mb-6 text-sm leading-relaxed">
+                            Built an NLP pipeline to classify 51,000+ social media posts into 7 distinct mental health categories. Addressed severe class imbalance using stratified sampling and metric-driven evaluation.
+                        </p>
+                        <p class="text-gray-300 mb-6 text-sm leading-relaxed">
+                            <strong>Key Innovation:</strong> Benchmarked MentalBERT, BioBERT, and PubMedBERT; selected MentalBERT based on superior minority-class performance (F1 = 0.84), especially for Personality Disorders. Designed an emotion-aware preprocessing pipeline preserving linguistic cues (capitalization, punctuation), improving Logistic Regression baseline performance by 15%.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="skill-pill text-ds-cyan border-ds-cyan/30">Python</span>
+                            <span class="skill-pill text-ds-cyan border-ds-cyan/30">Transformers</span>
+                            <span class="skill-pill text-ds-cyan border-ds-cyan/30">MentalBERT</span>
+                            <span class="skill-pill text-ds-cyan border-ds-cyan/30">F1: 0.84</span>
+                        </div>
+                        <div class="flex flex-wrap items-center gap-x-6 gap-y-2">
+                            <a href="https://github.com/Harneet9602/Mental-Health-Classification" target="_blank" class="inline-flex items-center text-white hover:text-ds-cyan font-semibold text-sm">
+                                View Code <i data-feather="external-link" class="w-4 h-4 ml-2"></i>
+                            </a>
+                            <a href="https://mental-health-nlp-analyzer.streamlit.app/" target="_blank" class="inline-flex items-center text-white hover:text-ds-cyan font-semibold text-sm">
+                                Live Demo <i data-feather="play-circle" class="w-4 h-4 ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education -->
+        <section id="education" class="py-24 section-fade-in">
+             <h2 class="text-3xl font-bold text-center text-white mb-16"><span class="text-green-400">Timeline</span></h2>
+             
+             <div class="max-w-3xl mx-auto border-l-2 border-gray-800 ml-4 md:ml-0 space-y-12 pl-8 md:pl-0">
+                 
+                 <!-- Item 0: Current -->
+                 <div class="relative md:flex gap-8 group">
+                     <div class="hidden md:block w-32 text-right pt-1">
+                         <span class="text-green-400 font-mono text-sm">2026 - Present</span>
+                     </div>
+                     <div class="absolute -left-[41px] md:left-auto md:relative md:w-4 flex justify-center">
+                         <div class="timeline-dot bg-green-500 animate-pulse group-hover:scale-125 transition-transform"></div>
+                     </div>
+                     <div class="flex-1 glass-card p-6 rounded-lg -mt-2 border border-green-500/30">
+                         <h3 class="text-xl font-bold text-white">Full-Stack Engineering Intern</h3>
+                         <p class="text-ds-cyan text-sm mb-2">Incredible Visibility, Remote</p>
+                         <p class="text-gray-400 text-sm">Currently building production AI automation-engine features on the Mayavi platform.</p>
+                     </div>
+                 </div>
+
+                 <!-- Item 1 -->
+                 <div class="relative md:flex gap-8 group">
+                     <div class="hidden md:block w-32 text-right pt-1">
+                         <span class="text-gray-500 font-mono text-sm">2024 - 2026</span>
+                     </div>
+                     <div class="absolute -left-[41px] md:left-auto md:relative md:w-4 flex justify-center">
+                         <div class="timeline-dot bg-gray-600 group-hover:bg-ds-cyan transition-colors"></div>
+                     </div>
+                     <div class="flex-1 glass-card p-6 rounded-lg -mt-2">
+                         <h3 class="text-xl font-bold text-white">M.Sc. Data Science</h3>
+                         <p class="text-ds-cyan text-sm mb-2">VIT University, Vellore</p>
+                         <p class="text-gray-400 text-sm">CGPA: 9.46 / 10.0 (Sem 1: 9.56, Sem 2: 9.35, Sem 3: 9.0, Sem 4: 9.75)</p>
+                     </div>
+                 </div>
+
+                 <!-- Item 2 -->
+                 <div class="relative md:flex gap-8 group">
+                     <div class="hidden md:block w-32 text-right pt-1">
+                         <span class="text-gray-500 font-mono text-sm">2020 - 2023</span>
+                     </div>
+                     <div class="absolute -left-[41px] md:left-auto md:relative md:w-4 flex justify-center">
+                         <div class="timeline-dot bg-gray-600 group-hover:bg-ds-cyan transition-colors"></div>
+                     </div>
+                     <div class="flex-1 glass-card p-6 rounded-lg -mt-2">
+                         <h3 class="text-xl font-bold text-white">B.Sc. (Hons) Statistics</h3>
+                         <p class="text-ds-cyan text-sm mb-2">BJB Autonomous College, Bhubaneswar</p>
+                         <p class="text-gray-400 text-sm">CGPA: 9.12 / 10.0 (Core CGPA: 9.29) — Rank 2 in Department (Distinction). <br>Achievements: AIR 607 (IIT JAM – Statistics), AIR 348 (CUET PG)</p>
+                     </div>
+                 </div>
+                 
+                 <!-- Item 3 -->
+                  <div class="relative md:flex gap-8 group">
+                     <div class="hidden md:block w-32 text-right pt-1">
+                         <span class="text-gray-500 font-mono text-sm">2018 - 2020</span>
+                     </div>
+                     <div class="absolute -left-[41px] md:left-auto md:relative md:w-4 flex justify-center">
+                         <div class="timeline-dot bg-gray-600 group-hover:bg-ds-purple transition-colors"></div>
+                     </div>
+                     <div class="flex-1 glass-card p-6 rounded-lg -mt-2">
+                         <h3 class="text-xl font-bold text-white">Higher Secondary (CBSE)</h3>
+                         <p class="text-ds-purple text-sm mb-2">Dalmia Vidya Mandir</p>
+                         <p class="text-gray-400 text-sm">Class 12: 93.4% | Class 10: 95.2%</p>
+                     </div>
+                 </div>
+             </div>
+        </section>
+        <!-- Certifications Section (New Separate Section) -->
+        <!-- Certifications & Continuous Learning Section (Compact, Side by Side) -->
+        <section id="certifications" class="py-24 section-fade-in">
+            <h2 class="text-3xl font-bold text-center text-white mb-16">Certifications & <span class="text-green-400">Continuous Learning</span></h2>
+
+            <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+
+                <!-- Certifications Column -->
+                <div>
+                    <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                        <i data-feather="award" class="text-ds-amber w-5 h-5"></i> Certifications
+                    </h3>
+                    <div class="glass-card rounded-xl divide-y divide-white/5">
+                        <div class="flex items-center justify-between px-5 py-3">
+                            <div>
+                                <p class="text-sm font-semibold text-white">GenAI Cybersecurity</p>
+                                <p class="text-xs text-gray-500">Udemy</p>
+                            </div>
+                            <span class="px-2 py-0.5 rounded-full bg-green-500/20 text-green-400 text-xs font-semibold whitespace-nowrap">Completed</span>
+                        </div>
+                        <div class="flex items-center justify-between px-5 py-3">
+                            <div>
+                                <p class="text-sm font-semibold text-white">Data Analytics using Excel</p>
+                                <p class="text-xs text-gray-500">Udemy</p>
+                            </div>
+                            <span class="px-2 py-0.5 rounded-full bg-green-500/20 text-green-400 text-xs font-semibold whitespace-nowrap">Completed</span>
+                        </div>
+                        <div class="flex items-center justify-between px-5 py-3">
+                            <div>
+                                <p class="text-sm font-semibold text-white">Claude 101</p>
+                                <p class="text-xs text-gray-500">Anthropic</p>
+                            </div>
+                            <span class="px-2 py-0.5 rounded-full bg-green-500/20 text-green-400 text-xs font-semibold whitespace-nowrap">Completed</span>
+                        </div>
+                        <div class="flex items-center justify-between px-5 py-3">
+                            <div>
+                                <p class="text-sm font-semibold text-white">Claude Code in Action</p>
+                                <p class="text-xs text-gray-500">Anthropic</p>
+                            </div>
+                            <span class="px-2 py-0.5 rounded-full bg-green-500/20 text-green-400 text-xs font-semibold whitespace-nowrap">Completed</span>
+                        </div>
+                        <div class="flex items-center justify-between px-5 py-3">
+                            <div>
+                                <p class="text-sm font-semibold text-white">AI Fluency: Framework & Foundations</p>
+                                <p class="text-xs text-gray-500">Anthropic</p>
+                            </div>
+                            <span class="px-2 py-0.5 rounded-full bg-green-500/20 text-green-400 text-xs font-semibold whitespace-nowrap">Completed</span>
+                        </div>
+                        <div class="flex items-center justify-between px-5 py-3">
+                            <div>
+                                <p class="text-sm font-semibold text-white">Introduction to Agent Skills</p>
+                                <p class="text-xs text-gray-500">Anthropic</p>
+                            </div>
+                            <span class="px-2 py-0.5 rounded-full bg-green-500/20 text-green-400 text-xs font-semibold whitespace-nowrap">Completed</span>
+                        </div>
+                        <div class="flex items-center justify-between px-5 py-3">
+                            <div>
+                                <p class="text-sm font-semibold text-white">Ongoing Claude Certifications</p>
+                                <p class="text-xs text-gray-500">Anthropic</p>
+                            </div>
+                            <span class="px-2 py-0.5 rounded-full bg-ds-purple/20 text-ds-purple text-xs font-semibold whitespace-nowrap">Ongoing</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Continuous Learning Column -->
+                <div>
+                    <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                        <i data-feather="book-open" class="text-green-400 w-5 h-5"></i> Continuous Learning
+                    </h3>
+                    <div class="space-y-3">
+                        <a href="https://github.com/entbappy/Complete-Agentic-AI-Course" target="_blank" class="glass-card px-5 py-3 rounded-xl flex items-center gap-3 hover:bg-white/5 transition-all group">
+                            <div class="p-2 bg-red-500/20 rounded-lg text-red-500 group-hover:text-white group-hover:bg-red-500 transition-colors">
+                                <i data-feather="youtube" class="w-4 h-4"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm font-semibold text-white">Complete Agentic AI Course</p>
+                                <p class="text-xs text-gray-500">LangChain, LangGraph, RAG & Multi-Agent Systems (freeCodeCamp)</p>
+                            </div>
+                        </a>
+                        <div class="glass-card px-5 py-3 rounded-xl flex items-center gap-3">
+                            <div class="p-2 bg-ds-purple/20 rounded-lg text-ds-purple">
+                                <i data-feather="git-branch" class="w-4 h-4"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm font-semibold text-white">12 Agentic AI Projects</p>
+                                <p class="text-xs text-gray-500">Building a portfolio series — structured output agents, RAG, ReAct planning, multi-tool orchestration & more</p>
+                            </div>
+                        </div>
+                        <div class="glass-card px-5 py-3 rounded-xl flex items-center gap-3">
+                            <div class="p-2 bg-ds-cyan/20 rounded-lg text-ds-cyan">
+                                <i data-feather="code" class="w-4 h-4"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm font-semibold text-white">100 Days of Code (Python)</p>
+                                <p class="text-xs text-gray-500">Udemy</p>
+                            </div>
+                        </div>
+                        <a href="https://www.geeksforgeeks.org/" target="_blank" class="glass-card px-5 py-3 rounded-xl flex items-center gap-3 hover:bg-white/5 transition-all group">
+                            <div class="p-2 bg-green-500/20 rounded-lg text-green-500 group-hover:text-white group-hover:bg-green-500 transition-colors">
+                                <i data-feather="code" class="w-4 h-4"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm font-semibold text-white">GeeksforGeeks</p>
+                            </div>
+                        </a>
+                        <a href="https://www.w3schools.com/" target="_blank" class="glass-card px-5 py-3 rounded-xl flex items-center gap-3 hover:bg-white/5 transition-all group">
+                            <div class="p-2 bg-green-500/20 rounded-lg text-green-500 group-hover:text-white group-hover:bg-green-500 transition-colors">
+                                <i data-feather="layout" class="w-4 h-4"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm font-semibold text-white">W3Schools</p>
+                                <p class="text-xs text-gray-500">Web & SQL Fundamentals</p>
+                            </div>
+                        </a>
+                        <a href="https://www.indiabix.com/" target="_blank" class="glass-card px-5 py-3 rounded-xl flex items-center gap-3 hover:bg-white/5 transition-all group">
+                            <div class="p-2 bg-blue-500/20 rounded-lg text-blue-500 group-hover:text-white group-hover:bg-blue-500 transition-colors">
+                                <i data-feather="book-open" class="w-4 h-4"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm font-semibold text-white">IndiaBIX</p>
+                                <p class="text-xs text-gray-500">Aptitude & Reasoning Practice</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <!-- Achievements Section -->
+        <section id="achievements" class="py-24 section-fade-in">
+            <h2 class="text-3xl font-bold text-center text-white mb-16">Key <span class="text-ds-amber">Achievements</span></h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+                <div class="glass-card p-8 rounded-xl text-center border-l-4 border-ds-amber">
+                    <h3 class="text-2xl font-bold text-white mb-2">AIR 607</h3>
+                    <p class="text-ds-amber font-mono font-bold">IIT JAM (Statistics)</p>
+                    <p class="text-sm text-gray-400 mt-2">Achieved All India Rank 607 in Joint Admission Test for Masters</p>
+                </div>
+                <div class="glass-card p-8 rounded-xl text-center border-l-4 border-ds-amber">
+                    <h3 class="text-2xl font-bold text-white mb-2">AIR 348</h3>
+                    <p class="text-ds-amber font-mono font-bold">CUET PG (Statistics)</p>
+                    <p class="text-sm text-gray-400 mt-2">Achieved All India Rank 348 in Common University Entrance Test</p>
+                </div>
+            </div>
+        </section>
+        <!-- Contact Section -->
+        <section id="contact" class="py-24 border-t border-gray-800">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-4xl font-bold text-white mb-6">Let's Build The Future</h2>
+                <p class="text-xl text-gray-400 mb-10">
+                    I am actively seeking opportunities to apply my skills in a challenging environment.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-6">
+                    <a href="mailto:harneetkaur4464@gmail.com" class="px-8 py-4 rounded-full bg-green-500 text-black font-bold hover:bg-emerald-400 transition-all shadow-lg flex items-center justify-center gap-2">
+                        <i data-feather="mail"></i> Email Me
+                    </a>
+                    <a href="https://www.linkedin.com/in/harneet-k-a04649251/" target="_blank" class="px-8 py-4 rounded-full glass-card text-white hover:text-ds-cyan hover:border-ds-cyan transition-all flex items-center justify-center gap-2">
+                        <i data-feather="linkedin"></i> LinkedIn
+                    </a>
+                     <a href="https://github.com/Harneet9602" target="_blank" class="px-8 py-4 rounded-full glass-card text-white hover:text-ds-purple hover:border-ds-purple transition-all flex items-center justify-center gap-2">
+                        <i data-feather="github"></i> GitHub
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="border-t border-gray-900 bg-ds-dark py-8 text-center text-gray-600 text-sm">
+        <p>&copy; 2026 Harneet Kaur. Built with <span class="text-ds-cyan">Code</span> & <span class="text-ds-purple">Data</span>.</p>
+    </footer>
+
+    <script>
+        feather.replace();
+
+        // Simple Intersection Observer for fade-ins
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.section-fade-in').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Mobile Menu
+        const btn = document.getElementById('mobile-menu-button');
+        const menu = document.getElementById('mobile-menu');
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
