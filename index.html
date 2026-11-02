@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harneet Kaur | AI/ML Engineer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        'ds-dark': '#020617',    /* Deep Black */
+                        'ds-navy': '#0f172a',    /* Navy Blue */
+                        'ds-teal': '#115e59',    /* Dark Teal */
+                        'ds-cyan': '#22d3ee',    /* Bright Cyan Accent */
+                        'ds-purple': '#a78bfa',  /* Purple Accent */
+                        'ds-rose': '#fb7185',    /* Rose Accent */
+                        'ds-amber': '#fbbf24',   /* Amber Accent */
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* --- PURE CSS BACKGROUND (NO IMAGES) --- */
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #e2e8f0;
+            min-height: 100vh;
+            
+            /* The requested gradient: Black -> Navy -> Teal */
+            background: linear-gradient(135deg, #020617 0%, #0f172a 40%, #0f2e3a 100%);
+            background-attachment: fixed;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #020617; }
+        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #22d3ee; }
+
+        /* Utilities */
+        .section-fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .glow-text {
+            background: linear-gradient(135deg, #22d3ee, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(34, 211, 238, 0.2);
+        }
+
+        /* Glassmorphism Cards */
+        .glass-card {
+            background: rgba(15, 23, 42, 0.6); /* Navy with transparency */
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glass-card:hover {
+            border-color: rgba(34, 211, 238, 0.4);
+            box-shadow: 0 0 25px rgba(34, 211, 238, 0.1);
+            transform: translateY(-4px);
+            background: rgba(15, 23, 42, 0.8);
+        }
+
+        .skill-pill {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-family: 'JetBrains Mono', monospace;
+            transition: all 0.3s;
+        }
+        .skill-pill:hover {
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+
+        /* Timeline Dot */
+        .timeline-dot {
+            width: 12px;
+            height: 12px;
+            background: #10b981; /* Emerald Green */
+            border-radius: 50%;
+            margin-top: 6px;
+            box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.2);
+        }
+
+        /* Image Styling */
+        .hero-img-container {
+            position: relative;
+            border-radius: 9999px; 
+            padding: 3px;
+            background: linear-gradient(135deg, #22d3ee, #10b981);
+            box-shadow: 0 0 40px rgba(34, 211, 238, 0.2);
+        }
+        
+        .about-img-container {
+            position: relative;
+            border-radius: 1rem;
+            padding: 1px;
+            background: linear-gradient(135deg, #22d3ee, #a78bfa);
+            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.5);
+        }
+    </style>
+</head>
+<body class="selection:bg-ds-cyan selection:text-black">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-card border-b-0 rounded-b-xl mx-auto max-w-7xl inset-x-0 top-0 mt-0 md:mt-4 md:rounded-xl">
+        <div class="px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0 flex items-center gap-2">
+                    <span class="text-xl font-bold font-mono text-white tracking-tight">
+                        Harneet <span class="text-ds-cyan">Kaur</span>
+                    </span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#experience" class="text-gray-300 hover:text-ds-cyan text-sm font-medium transition-colors">Experience</a>
+                    <a href="#skills" class="text-gray-300 hover:text-ds-cyan text-sm font-medium transition-colors">Stack</a>
+                    <a href="#projects" class="text-gray-300 hover:text-ds-cyan text-sm font-medium transition-colors">Projects</a>
+                    <a href="#education" class="text-gray-300 hover:text-ds-cyan text-sm font-medium transition-colors">Journey</a>
+                    <a href="#contact" class="px-5 py-2 rounded-lg bg-ds-cyan/10 text-ds-cyan border border-ds-cyan/20 hover:bg-ds-cyan hover:text-black transition-all text-sm font-bold">Contact</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-300 hover:text-white p-2">
+                        <i data-feather="menu"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden glass-card border-t border-gray-700 rounded-b-xl">
+            <div class="px-4 pt-4 pb-6 space-y-2">
+                <a href="#experience" class="block text-gray-300 hover:text-ds-cyan py-2">Experience</a>
+                <a href="#skills" class="block text-gray-300 hover:text-ds-cyan py-2">Skills</a>
+                <a href="#projects" class="block text-gray-300 hover:text-ds-cyan py-2">Projects</a>
+                <a href="#education" class="block text-gray-300 hover:text-ds-cyan py-2">Journey</a>
+                <a href="#contact" class="block text-ds-cyan font-bold py-2">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28">
+
+        <!-- Hero Section -->
+        <section id="home" class="min-h-[85vh] flex flex-col md:flex-row justify-center items-center gap-12 py-20">
+            <!-- Text Content -->
+            <div class="flex-1 text-center md:text-left z-10">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 text-ds-cyan text-xs font-mono mb-6 border border-ds-cyan/20">
+                    <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                    M.Sc. Data Science | AI/ML Engineer
+                </div>
+                <h1 class="text-5xl md:text-7xl font-bold tracking-tight mb-6 leading-tight text-white">
+                    Exploring AI. <br>
+                    <span class="glow-text">Building What’s Next.</span>
+                </h1>
+                <p class="text-lg md:text-xl text-gray-400 leading-relaxed mb-6 max-w-2xl font-light">
+                    AI/ML Engineer focused on Agentic AI, multi-agent systems and LLM applications, with an M.Sc. in Data Science and a strong foundation in Statistics. Completed an industry internship at Incredible Visibility, contributing to AI automation, LLM-powered features and workflow engineering. Interested in building practical, reliable AI systems and exploring opportunities in AI/ML and Generative AI.
+                </p>
+                <div class="flex flex-wrap justify-center md:justify-start gap-2 mb-8">
+                    <span class="skill-pill text-ds-cyan border-ds-cyan/20 bg-ds-cyan/5">9.46 CGPA (M.Sc.)</span>
+                    <span class="skill-pill text-ds-purple border-ds-purple/20 bg-ds-purple/5">6-Agent LangGraph System</span>
+                    <span class="skill-pill text-ds-rose border-ds-rose/20 bg-ds-rose/5">AI Automation Experience</span>
+                    <span class="skill-pill text-ds-amber border-ds-amber/20 bg-ds-amber/5">AI/ML + Engineering</span>
+                </div>
+                <div class="flex flex-wrap justify-center md:justify-start gap-4">
+                    <a href="./Harneet-Resume.pdf" download class="px-8 py-3.5 rounded-lg glass-card text-white hover:bg-white/5 transition-all flex items-center gap-2 group">
+                        <i data-feather="download" class="w-4 h-4 group-hover:translate-y-1 transition-transform"></i> Resume
+                    </a>
+                </div>
+            </div>
+            
+            <!-- IMAGE 1: HERO (Circular Profile) -->
+            <div class="flex-1 max-w-sm relative z-10 flex justify-center">
+                <div class="hero-img-container rounded-full w-72 h-72 md:w-80 md:h-80 overflow-hidden">
+                     <img src="dp1.png" alt="Harneet Kaur" class="w-full h-full object-cover bg-gray-900">
+                </div>
+            </div>
+        </section>
+
+        <!-- Work Experience Section -->
+        <section id="experience" class="py-24 section-fade-in">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 border-b border-gray-800 pb-8">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-2">Work Experience</h2>
+                    <p class="text-gray-400">AI Automation & Full-Stack Engineering</p>
+                </div>
+                <div class="flex gap-4 mt-4 md:mt-0">
+                    <span class="text-gray-400 font-mono text-sm flex items-center gap-2 border border-gray-700 px-4 py-2 rounded">
+                        <i data-feather="map-pin" class="w-4 h-4"></i> Incredible Visibility | Remote
+                    </span>
+                </div>
+            </div>
+
+            <div class="max-w-4xl mx-auto glass-card rounded-xl p-8 md:p-10">
+                <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-3 mb-6">
+                    <div>
+                        <h3 class="text-2xl font-bold text-white">Full-Stack Engineering Intern</h3>
+                        <p class="text-ds-cyan mt-1">Incredible Visibility</p>
+                    </div>
+                    <span class="text-sm font-mono text-gray-400">Mar 2026 – Oct 2026</span>
+                </div>
+                <p class="text-gray-300 leading-relaxed mb-6">
+                    Contributed to the development of Mayavi, an AI automation platform, working across AI-powered automation, LLM applications and full-stack product engineering.
+                </p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="skill-pill text-ds-cyan border-ds-cyan/30">AI Automation</span>
+                    <span class="skill-pill text-ds-cyan border-ds-cyan/30">LLM Applications</span>
+                    <span class="skill-pill text-ds-cyan border-ds-cyan/30">Workflow Engineering</span>
+                    <span class="skill-pill text-ds-cyan border-ds-cyan/30">LLM Fine-Tuning</span>
+                    <span class="skill-pill text-ds-cyan border-ds-cyan/30">Voice Automation</span>
+                    <span class="skill-pill text-ds-cyan border-ds-cyan/30">Full-Stack Development</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technical Skills -->
+        <section id="skills" class="py-24 section-fade-in relative">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <p class="font-mono text-ds-cyan text-sm tracking-[0.25em] uppercase mb-3">My toolkit</p>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+                        Technical <span class="glow-text">Skills</span>
+                    </h2>
+                    <p class="text-gray-400 leading-relaxed">
+                        A mix of AI, data science and engineering tools I’ve used across academic projects and industry work.
+                    </p>
+                </div>
+
+                <!-- Focus chips -->
+                <div class="flex flex-wrap justify-center gap-3 mb-10">
+                    <span class="skill-pill text-ds-cyan border-ds-cyan/30 bg-ds-cyan/10"><i data-feather="git-branch" class="w-3.5 h-3.5 inline mr-1"></i> Agentic AI</span>
+                    <span class="skill-pill text-ds-purple border-ds-purple/30 bg-ds-purple/10"><i data-feather="message-square" class="w-3.5 h-3.5 inline mr-1"></i> LLM Applications</span>
+                    <span class="skill-pill text-ds-rose border-ds-rose/30 bg-ds-rose/10"><i data-feather="brain" class="w-3.5 h-3.5 inline mr-1"></i> Machine Learning</span>
+                    <span class="skill-pill text-ds-amber border-ds-amber/30 bg-ds-amber/10"><i data-feather="bar-chart-2" class="w-3.5 h-3.5 inline mr-1"></i> Statistics & NLP</span>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
+
+                    <!-- Agentic AI & LLMs -->
+                    <div class="glass-card group p-6 rounded-2xl relative overflow-hidden hover:-translate-y-1 hover:border-ds-cyan/40 transition-all duration-300">
+                        <div class="absolute -right-8 -top-8 w-28 h-28 rounded-full bg-ds-cyan/10 blur-2xl group-hover:bg-ds-cyan/20 transition-all"></div>
+                        <div class="flex items-start justify-between mb-5">
+                            <div class="w-12 h-12 rounded-xl bg-ds-cyan/10 border border-ds-cyan/20 flex items-center justify-center">
+                                <i data-feather="git-branch" class="text-ds-cyan w-6 h-6"></i>
+                            </div>
+                            <span class="text-[10px] font-mono uppercase tracking-widest text-ds-cyan/80 border border-ds-cyan/20 rounded-full px-2.5 py-1">Focus area</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">Agentic AI & LLMs</h3>
+                        <p class="text-sm text-gray-400 mb-4">Building blocks for intelligent, tool-using applications.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-pill text-ds-cyan border-ds-cyan/20 bg-ds-cyan/5">Agentic AI</span>
+                            <span class="skill-pill text-ds-cyan border-ds-cyan/20 bg-ds-cyan/5">Multi-Agent Systems</span>
+                            <span class="skill-pill text-ds-cyan border-ds-cyan/20 bg-ds-cyan/5">LLM Applications</span>
+                            <span class="skill-pill text-ds-cyan border-ds-cyan/20 bg-ds-cyan/5">LangGraph</span>
+                            <span class="skill-pill text-ds-cyan border-ds-cyan/20 bg-ds-cyan/5">LangChain</span>
+                            <span class="skill-pill text-ds-cyan border-ds-cyan/20 bg-ds-cyan/5">RAG</span>
+                            <span class="skill-pill text-ds-cyan border-ds-cyan/20 bg-ds-cyan/5">Prompt Engineering</span>
+                            <span class="skill-pill text-ds-cyan border-ds-cyan/20 bg-ds-cyan/5">LLM Fine-Tuning</span>
+                            <span class="skill-pill text-ds-cyan border-ds-cyan/20 bg-ds-cyan/5">OpenAI API</span>
+                            <span class="skill-pill text-ds-cyan border-ds-cyan/20 bg-ds-cyan/5">Groq</span>
+                        </div>
+                    </div>
+
+                    <!-- ML & NLP -->
+                    <div class="glass-card group p-6 rounded-2xl relative overflow-hidden hover:-translate-y-1 hover:border-ds-rose/40 transition-all duration-300">
+                        <div class="absolute -right-8 -top-8 w-28 h-28 rounded-full bg-ds-rose/10 blur-2xl group-hover:bg-ds-rose/20 transition-all"></div>
+                        <div class="flex items-start justify-between mb-5">
+                            <div class="w-12 h-12 rounded-xl bg-ds-rose/10 border border-ds-rose/20 flex items-center justify-center">
+                                <i data-feather="cpu" class="text-ds-rose w-6 h-6"></i>
+                            </div>
+                            <span class="text-[10px] font-mono uppercase tracking-widest text-ds-rose/80 border border-ds-rose/20 rounded-full px-2.5 py-1">Core domain</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">Machine Learning & NLP</h3>
+                        <p class="text-sm text-gray-400 mb-4">Model development, experimentation and evaluation.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-pill text-ds-rose border-ds-rose/20 bg-ds-rose/5">Machine Learning</span>
+                            <span class="skill-pill text-ds-rose border-ds-rose/20 bg-ds-rose/5">Deep Learning</span>
+                            <span class="skill-pill text-ds-rose border-ds-rose/20 bg-ds-rose/5">NLP</span>
+                            <span class="skill-pill text-ds-rose border-ds-rose/20 bg-ds-rose/5">Transformers</span>
+                            <span class="skill-pill text-ds-rose border-ds-rose/20 bg-ds-rose/5">Text Classification</span>
+                            <span class="skill-pill text-ds-rose border-ds-rose/20 bg-ds-rose/5">Recommendation Systems</span>
+                            <span class="skill-pill text-ds-rose border-ds-rose/20 bg-ds-rose/5">Model Evaluation</span>
+                            <span class="skill-pill text-ds-rose border-ds-rose/20 bg-ds-rose/5">Scikit-learn</span>
+                            <span class="skill-pill text-ds-rose border-ds-rose/20 bg-ds-rose/5">TensorFlow</span>
+                            <span class="skill-pill text-ds-rose border-ds-rose/20 bg-ds-rose/5">Keras</span>
+                        </div>
+                    </div>
+
+                    <!-- Programming -->
+                    <div class="glass-card group p-6 rounded-2xl relative overflow-hidden hover:-translate-y-1 hover:border-ds-purple/40 transition-all duration-300">
+                        <div class="absolute -right-8 -top-8 w-28 h-28 rounded-full bg-ds-purple/10 blur-2xl group-hover:bg-ds-purple/20 transition-all"></div>
+                        <div class="flex items-start justify-between mb-5">
+                            <div class="w-12 h-12 rounded-xl bg-ds-purple/10 border border-ds-purple/20 flex items-center justify-center">
+                                <i data-feather="code" class="text-ds-purple w-6 h-6"></i>
+                            </div>
+                            <span class="text-[10px] font-mono uppercase tracking-widest text-ds-purple/80 border border-ds-purple/20 rounded-full px-2.5 py-1">Languages</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">Programming</h3>
+                        <p class="text-sm text-gray-400 mb-4">Languages used in coursework, projects and development.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-pill text-ds-purple border-ds-purple/20 bg-ds-purple/5">Python</span>
+                            <span class="skill-pill text-ds-purple border-ds-purple/20 bg-ds-purple/5">SQL</span>
+                            <span class="skill-pill text-ds-purple border-ds-purple/20 bg-ds-purple/5">JavaScript</span>
+                            <span class="skill-pill text-ds-purple border-ds-purple/20 bg-ds-purple/5">R</span>
+                        </div>
+                    </div>
+
+                    <!-- Data Science -->
+                    <div class="glass-card group p-6 rounded-2xl relative overflow-hidden hover:-translate-y-1 hover:border-ds-amber/40 transition-all duration-300">
+                        <div class="absolute -right-8 -top-8 w-28 h-28 rounded-full bg-ds-amber/10 blur-2xl group-hover:bg-ds-amber/20 transition-all"></div>
+                        <div class="flex items-start justify-between mb-5">
+                            <div class="w-12 h-12 rounded-xl bg-ds-amber/10 border border-ds-amber/20 flex items-center justify-center">
+                                <i data-feather="bar-chart-2" class="text-ds-amber w-6 h-6"></i>
+                            </div>
+                            <span class="text-[10px] font-mono uppercase tracking-widest text-ds-amber/80 border border-ds-amber/20 rounded-full px-2.5 py-1">Data toolkit</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">Data Science & Statistics</h3>
+                        <p class="text-sm text-gray-400 mb-4">Statistical thinking, analysis and data exploration.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-pill text-ds-amber border-ds-amber/20 bg-ds-amber/5">Statistics</span>
+                            <span class="skill-pill text-ds-amber border-ds-amber/20 bg-ds-amber/5">Probability</span>
+                            <span class="skill-pill text-ds-amber border-ds-amber/20 bg-ds-amber/5">Statistical Modelling</span>
+                            <span class="skill-pill text-ds-amber border-ds-amber/20 bg-ds-amber/5">NumPy</span>
+                            <span class="skill-pill text-ds-amber border-ds-amber/20 bg-ds-amber/5">Pandas</span>
+                            <span class="skill-pill text-ds-amber border-ds-amber/20 bg-ds-amber/5">Matplotlib</span>
+                            <span class="skill-pill text-ds-amber border-ds-amber/20 bg-ds-amber/5">Seaborn</span>
+                            <span class="skill-pill text-ds-amber border-ds-amber/20 bg-ds-amber/5">Jupyter Notebook</span>
+                        </div>
+                    </div>
+
+                    <!-- Development & Platforms -->
+                    <div class="glass-card group p-6 rounded-2xl relative overflow-hidden hover:-translate-y-1 hover:border-emerald-400/40 transition-all duration-300">
+                        <div class="absolute -right-8 -top-8 w-28 h-28 rounded-full bg-emerald-400/10 blur-2xl group-hover:bg-emerald-400/20 transition-all"></div>
+                        <div class="flex items-start justify-between mb-5">
+                            <div class="w-12 h-12 rounded-xl bg-emerald-400/10 border border-emerald-400/20 flex items-center justify-center">
+                                <i data-feather="terminal" class="text-emerald-300 w-6 h-6"></i>
+                            </div>
+                            <span class="text-[10px] font-mono uppercase tracking-widest text-emerald-300/80 border border-emerald-300/20 rounded-full px-2.5 py-1">Tools</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">Development & Platforms</h3>
+                        <p class="text-sm text-gray-400 mb-4">Tools and platforms used to build, manage and share projects.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-pill text-emerald-300 border-emerald-300/20 bg-emerald-300/5">Git</span>
+                            <span class="skill-pill text-emerald-300 border-emerald-300/20 bg-emerald-300/5">GitHub</span>
+                            <span class="skill-pill text-emerald-300 border-emerald-300/20 bg-emerald-300/5">Bitbucket</span>
+                            <span class="skill-pill text-emerald-300 border-emerald-300/20 bg-emerald-300/5">Supabase</span>
+                            <span class="skill-pill text-emerald-300 border-emerald-300/20 bg-emerald-300/5">Streamlit</span>
+                            <span class="skill-pill text-emerald-300 border-emerald-300/20 bg-emerald-300/5">VS Code</span>
+                            <span class="skill-pill text-emerald-300 border-emerald-300/20 bg-emerald-300/5">DBMS</span>
+                        </div>
+                    </div>
+
+                    <!-- Internship Exposure -->
+                    <div class="glass-card group p-6 rounded-2xl relative overflow-hidden hover:-translate-y-1 hover:border-blue-400/40 transition-all duration-300">
+                        <div class="absolute -right-8 -top-8 w-28 h-28 rounded-full bg-blue-400/10 blur-2xl group-hover:bg-blue-400/20 transition-all"></div>
+                        <div class="flex items-start justify-between mb-5">
+                            <div class="w-12 h-12 rounded-xl bg-blue-400/10 border border-blue-400/20 flex items-center justify-center">
+                                <i data-feather="layers" class="text-blue-300 w-6 h-6"></i>
+                            </div>
+                            <span class="text-[10px] font-mono uppercase tracking-widest text-blue-300/80 border border-blue-300/20 rounded-full px-2.5 py-1">Industry exposure</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">Full-Stack & Automation</h3>
+                        <p class="text-sm text-gray-400 mb-4">Technologies encountered while contributing to an AI automation product.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-pill text-blue-300 border-blue-300/20 bg-blue-300/5">React</span>
+                            <span class="skill-pill text-blue-300 border-blue-300/20 bg-blue-300/5">Node.js</span>
+                            <span class="skill-pill text-blue-300 border-blue-300/20 bg-blue-300/5">Fastify</span>
+                            <span class="skill-pill text-blue-300 border-blue-300/20 bg-blue-300/5">REST APIs</span>
+                            <span class="skill-pill text-blue-300 border-blue-300/20 bg-blue-300/5">Backend Integration</span>
+                            <span class="skill-pill text-blue-300 border-blue-300/20 bg-blue-300/5">Frontend Development</span>
+                            <span class="skill-pill text-blue-300 border-blue-300/20 bg-blue-300/5">AI Automation</span>
+                            <span class="skill-pill text-blue-300 border-blue-300/20 bg-blue-300/5">Voice Automation</span>
+                            <span class="skill-pill text-blue-300 border-blue-300/20 bg-blue-300/5">Integration Testing</span>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="text-center text-xs text-gray-500 mt-8">
+                    Skills reflect a combination of academic projects, practical use and industry exposure.
+                </p>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-24 section-fade-in">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 border-b border-gray-800 pb-8">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-2">Deployed Solutions</h2>
+                    <p class="text-gray-400">Academic and personal projects in Agentic AI and NLP.</p>
+                </div>
+                <div class="flex gap-4 mt-4 md:mt-0">
+                    <a href="https://github.com/Harneet9602/Machine-Learning-Portfolio" target="_blank" class="text-ds-purple hover:text-white font-mono text-sm flex items-center gap-2 border border-ds-purple/50 px-4 py-2 rounded hover:bg-ds-purple/10 transition-all">
+                        <i data-feather="book"></i> ML Portfolio
+                    </a>
+                    <a href="https://github.com/Harneet9602" target="_blank" class="text-ds-cyan hover:text-white font-mono text-sm flex items-center gap-2 border border-ds-cyan/50 px-4 py-2 rounded hover:bg-ds-cyan/10 transition-all">
+                        View GitHub <i data-feather="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Project 1: SEHAJ (most recent, left) -->
+                <div class="glass-card rounded-xl overflow-hidden group hover:border-ds-purple/50 transition-all">
+                    <div class="p-8">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="p-3 bg-ds-purple/10 rounded-lg text-ds-purple">
+                                <i data-feather="git-branch"></i>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-xs font-mono text-gray-400 block">Agentic AI / LLM</span>
+                                <span class="text-xs font-mono text-ds-purple">Dec 2025 – May 2026</span>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-3 group-hover:text-ds-purple transition-colors">SEHAJ: Multi-Agent Conversational AI for Mental Health Support</h3>
+                        <p class="text-gray-300 mb-6 text-sm leading-relaxed">
+                            Engineered a multi-agent orchestration framework with 6 specialized agents using LangGraph, improving intent routing and reducing context interference in clinical AI workflows.
+                        </p>
+                        <p class="text-xs font-bold text-gray-500 uppercase tracking-wide mb-2">Key Innovation</p>
+                        <ul class="text-gray-300 mb-6 text-sm leading-relaxed list-disc list-outside ml-4 space-y-1.5">
+                            <li>Guardian safety protocol: 90% interception accuracy on high-risk scenarios, 0% false positives on benign conversations</li>
+                            <li>Reduced token overhead by 54.7% with 0.71s average latency via Groq acceleration</li>
+                            <li>CTRS therapeutic validation score of 4.47/5</li>
+                        </ul>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="skill-pill text-ds-purple border-ds-purple/30">LangGraph</span>
+                            <span class="skill-pill text-ds-purple border-ds-purple/30">Llama 3.3</span>
+                            <span class="skill-pill text-ds-purple border-ds-purple/30">Groq</span>
+                            <span class="skill-pill text-ds-purple border-ds-purple/30">Streamlit</span>
+                        </div>
+                        <div class="flex flex-wrap items-center gap-x-6 gap-y-2">
+                            <a href="https://github.com/Harneet9602/Sehaj-Holistic-AI-Companion" target="_blank" class="inline-flex items-center text-white hover:text-ds-purple font-semibold text-sm">
+                                View Code <i data-feather="external-link" class="w-4 h-4 ml-2"></i>
+                            </a>
+                            <a href="https://sehaj-holistic-ai-companion-mxmfmefmmhgtxcweevkx7e.streamlit.app/" target="_blank" class="inline-flex items-center text-white hover:text-ds-purple font-semibold text-sm">
+                                Live Demo <i data-feather="play-circle" class="w-4 h-4 ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: NLP Mental Health Classification -->
+                <div class="glass-card rounded-xl overflow-hidden group hover:border-ds-cyan/50 transition-all">
+                    <div class="p-8">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="p-3 bg-ds-cyan/10 rounded-lg text-ds-cyan">
+                                <i data-feather="activity"></i>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-xs font-mono text-gray-400 block">NLP / Healthcare</span>
+                                <span class="text-xs font-mono text-ds-cyan">Jul 2025 – Nov 2025</span>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-3 group-hover:text-ds-cyan transition-colors">NLP-Powered Mental Health Status Detection</h3>
+                        <p class="text-gray-300 mb-6 text-sm leading-relaxed">
+                            Built an NLP pipeline to classify 51,000+ social media posts into 7 distinct mental health categories. Addressed severe class imbalance using stratified sampling and metric-driven evaluation.
+                        </p>
+                        <p class="text-xs font-bold text-gray-500 uppercase tracking-wide mb-2">Key Innovation</p>
+                        <ul class="text-gray-300 mb-6 text-sm leading-relaxed list-disc list-outside ml-4 space-y-1.5">
+                            <li>Benchmarked MentalBERT, BioBERT, and PubMedBERT; MentalBERT performed best on minority classes (F1 = 0.84)</li>
+                            <li>Emotion-aware preprocessing pipeline preserving linguistic cues (capitalization, punctuation)</li>
+                            <li>Improved baseline performance by 15% over standard Logistic Regression</li>
+                        </ul>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="skill-pill text-ds-cyan border-ds-cyan/30">Python</span>
+                            <span class="skill-pill text-ds-cyan border-ds-cyan/30">Transformers</span>
+                            <span class="skill-pill text-ds-cyan border-ds-cyan/30">MentalBERT</span>
+                            <span class="skill-pill text-ds-cyan border-ds-cyan/30">F1: 0.84</span>
+                        </div>
+                        <div class="flex flex-wrap items-center gap-x-6 gap-y-2">
+                            <a href="https://github.com/Harneet9602/Mental-Health-Classification" target="_blank" class="inline-flex items-center text-white hover:text-ds-cyan font-semibold text-sm">
+                                View Code <i data-feather="external-link" class="w-4 h-4 ml-2"></i>
+                            </a>
+                            <a href="https://mental-health-nlp-analyzer.streamlit.app/" target="_blank" class="inline-flex items-center text-white hover:text-ds-cyan font-semibold text-sm">
+                                Live Demo <i data-feather="play-circle" class="w-4 h-4 ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: Hybrid Product Recommendation System -->
+                <div class="glass-card rounded-xl overflow-hidden group hover:border-green-400/50 transition-all">
+                    <div class="p-8">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="p-3 bg-green-400/10 rounded-lg text-green-400">
+                                <i data-feather="shopping-cart"></i>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-xs font-mono text-gray-400 block">Recommender Systems / NLP</span>
+                                <span class="text-xs font-mono text-green-400">Aug 2024 – Oct 2025</span>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-3 group-hover:text-green-400 transition-colors">Hybrid Product Recommendation System</h3>
+                        <p class="text-gray-300 mb-6 text-sm leading-relaxed">
+                            Built a hybrid recommender combining SVD-based collaborative filtering with Sentence-BERT semantic embeddings for content-based filtering, addressing cold-start and data sparsity on a 73K-review Amazon dataset. Presented at ICADT'2025.
+                        </p>
+                        <p class="text-xs font-bold text-gray-500 uppercase tracking-wide mb-2">Key Innovation</p>
+                        <ul class="text-gray-300 mb-6 text-sm leading-relaxed list-disc list-outside ml-4 space-y-1.5">
+                            <li>GridSearchCV-tuned SVD model (RMSE 0.97–0.99) fused with 384-dim Sentence-BERT embeddings via weighted hybrid scoring</li>
+                            <li>Dynamic fallback to content-based scoring for cold-start users, plus a logarithmic popularity boost to reduce bias</li>
+                            <li>Precision@10 of 13.3–13.8%, Recall@10 of 32–40%, NDCG@10 of 24–29% — ~4x Precision@10 over a review-sentiment-only baseline (Elahi et al., 2023)</li>
+                        </ul>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="skill-pill text-green-400 border-green-400/30">Sentence-BERT</span>
+                            <span class="skill-pill text-green-400 border-green-400/30">SVD</span>
+                            <span class="skill-pill text-green-400 border-green-400/30">Surprise</span>
+                            <span class="skill-pill text-green-400 border-green-400/30">Scikit-learn</span>
+                        </div>
+                        <div class="flex flex-wrap items-center gap-x-6 gap-y-2">
+                            <a href="https://github.com/Harneet9602/Hybrid-Recommendation-System/tree/main" target="_blank" class="inline-flex items-center text-white hover:text-green-400 font-semibold text-sm">
+                                View Code <i data-feather="external-link" class="w-4 h-4 ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education -->
+        <section id="education" class="py-24 section-fade-in">
+             <h2 class="text-3xl font-bold text-center text-white mb-16"><span class="text-green-400">Timeline</span></h2>
+             
+             <div class="max-w-3xl mx-auto border-l-2 border-gray-800 ml-4 md:ml-0 space-y-12 pl-8 md:pl-0">
+                 
+                 <!-- Item 0: Industry Experience -->
+                 <div class="relative md:flex gap-8 group">
+                     <div class="hidden md:block w-32 text-right pt-1">
+                         <span class="text-gray-500 font-mono text-sm">Mar – Oct 2026</span>
+                     </div>
+                     <div class="absolute -left-[41px] md:left-auto md:relative md:w-4 flex justify-center">
+                         <div class="timeline-dot bg-gray-600 group-hover:bg-ds-cyan transition-colors"></div>
+                     </div>
+                     <div class="flex-1 glass-card p-6 rounded-lg -mt-2">
+                         <h3 class="text-xl font-bold text-white">Full-Stack Engineering Intern</h3>
+                         <p class="text-ds-cyan text-sm mb-2">Incredible Visibility, Remote</p>
+                         <p class="text-gray-400 text-sm">Contributed to Mayavi, an AI automation platform, working on AI-powered automation, LLM applications and workflow engineering.</p>
+                     </div>
+                 </div>
+
+                 <!-- Item 1 -->
+                 <div class="relative md:flex gap-8 group">
+                     <div class="hidden md:block w-32 text-right pt-1">
+                         <span class="text-gray-500 font-mono text-sm">2024 - 2026</span>
+                     </div>
+                     <div class="absolute -left-[41px] md:left-auto md:relative md:w-4 flex justify-center">
+                         <div class="timeline-dot bg-gray-600 group-hover:bg-ds-cyan transition-colors"></div>
+                     </div>
+                     <div class="flex-1 glass-card p-6 rounded-lg -mt-2">
+                         <h3 class="text-xl font-bold text-white">M.Sc. Data Science</h3>
+                         <p class="text-ds-cyan text-sm mb-2">VIT University, Vellore</p>
+                         <p class="text-gray-400 text-sm">CGPA: 9.46 / 10.0 (Sem 1: 9.56, Sem 2: 9.35, Sem 3: 9.0, Sem 4: 9.75)</p>
+                     </div>
+                 </div>
+
+                 <!-- Item 2 -->
+                 <div class="relative md:flex gap-8 group">
+                     <div class="hidden md:block w-32 text-right pt-1">
+                         <span class="text-gray-500 font-mono text-sm">2020 - 2023</span>
+                     </div>
+                     <div class="absolute -left-[41px] md:left-auto md:relative md:w-4 flex justify-center">
+                         <div class="timeline-dot bg-gray-600 group-hover:bg-ds-cyan transition-colors"></div>
+                     </div>
+                     <div class="flex-1 glass-card p-6 rounded-lg -mt-2">
+                         <h3 class="text-xl font-bold text-white">B.Sc. (Hons) Statistics</h3>
+                         <p class="text-ds-cyan text-sm mb-2">BJB Autonomous College, Bhubaneswar</p>
+                         <p class="text-gray-400 text-sm">CGPA: 9.12 / 10.0 (Core CGPA: 9.29), Rank 2 in Department (Distinction). <br>Achievements: AIR 607 (IIT JAM, Statistics), AIR 348 (CUET PG)</p>
+                     </div>
+                 </div>
+                 
+                 <!-- Item 3 -->
+                  <div class="relative md:flex gap-8 group">
+                     <div class="hidden md:block w-32 text-right pt-1">
+                         <span class="text-gray-500 font-mono text-sm">2018 - 2020</span>
+                     </div>
+                     <div class="absolute -left-[41px] md:left-auto md:relative md:w-4 flex justify-center">
+                         <div class="timeline-dot bg-gray-600 group-hover:bg-ds-purple transition-colors"></div>
+                     </div>
+                     <div class="flex-1 glass-card p-6 rounded-lg -mt-2">
+                         <h3 class="text-xl font-bold text-white">Higher Secondary (CBSE)</h3>
+                         <p class="text-ds-purple text-sm mb-2">Dalmia Vidya Mandir</p>
+                         <p class="text-gray-400 text-sm">Class 12: 93.4% | Class 10: 95.2%</p>
+                     </div>
+                 </div>
+             </div>
+        </section>
+        <!-- Achievements Section -->
+        <section id="achievements" class="py-24 section-fade-in">
+            <h2 class="text-3xl font-bold text-center text-white mb-16">Key <span class="text-ds-amber">Achievements</span></h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+                <div class="glass-card p-8 rounded-xl text-center border-l-4 border-ds-amber">
+                    <h3 class="text-2xl font-bold text-white mb-2">AIR 607</h3>
+                    <p class="text-ds-amber font-mono font-bold">IIT JAM (Statistics)</p>
+                    <p class="text-sm text-gray-400 mt-2">Achieved All India Rank 607 in Joint Admission Test for Masters</p>
+                </div>
+                <div class="glass-card p-8 rounded-xl text-center border-l-4 border-ds-amber">
+                    <h3 class="text-2xl font-bold text-white mb-2">AIR 348</h3>
+                    <p class="text-ds-amber font-mono font-bold">CUET PG (Statistics)</p>
+                    <p class="text-sm text-gray-400 mt-2">Achieved All India Rank 348 in Common University Entrance Test</p>
+                </div>
+            </div>
+        </section>
+        <!-- Contact Section -->
+        <section id="contact" class="py-24 border-t border-gray-800">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-4xl font-bold text-white mb-6">Let's Build The Future</h2>
+                <p class="text-xl text-gray-400 mb-10">
+                    I’m open to opportunities in AI/ML Engineering, Agentic AI and Generative AI.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-6">
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=harneetkaur4464@gmail.com" target="_blank" class="px-8 py-4 rounded-full bg-green-500 text-black font-bold hover:bg-emerald-400 transition-all shadow-lg flex items-center justify-center gap-2">
+                        <i data-feather="mail"></i> Email Me
+                    </a>
+                    <a href="https://www.linkedin.com/in/harneet-k-a04649251/" target="_blank" class="px-8 py-4 rounded-full glass-card text-white hover:text-ds-cyan hover:border-ds-cyan transition-all flex items-center justify-center gap-2">
+                        <i data-feather="linkedin"></i> LinkedIn
+                    </a>
+                     <a href="https://github.com/Harneet9602" target="_blank" class="px-8 py-4 rounded-full glass-card text-white hover:text-ds-purple hover:border-ds-purple transition-all flex items-center justify-center gap-2">
+                        <i data-feather="github"></i> GitHub
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="border-t border-gray-900 bg-ds-dark py-8 text-center text-gray-600 text-sm">
+        <p>&copy; 2026 Harneet Kaur. Built with <span class="text-ds-cyan">Code</span> & <span class="text-ds-purple">Data</span>.</p>
+    </footer>
+
+    <script>
+        feather.replace();
+
+        // Simple Intersection Observer for fade-ins
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.section-fade-in').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Mobile Menu
+        const btn = document.getElementById('mobile-menu-button');
+        const menu = document.getElementById('mobile-menu');
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
